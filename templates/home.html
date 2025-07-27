@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home | Daim Traders{% endblock title %}
+
+{% block body %}
+<div class="container my-5">
+
+  <!-- Hero Section (Carousel) -->
+  <div id="heroCarousel" class="carousel slide mb-5" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active position-relative">
+        <img src="{% static 'images/banner1.jpeg' %}" class="d-block w-100" alt="Slide 1">
+      </div>
+      <div class="carousel-item position-relative">
+        <img src="{% static 'images/banner2.png' %}" class="d-block w-100" alt="Slide 2">
+      </div>
+      <div class="carousel-item position-relative">
+        <img src="{% static 'images/banner3.jpeg' %}" class="d-block w-100" alt="Slide 3">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <!-- Categories Section -->
+  <h3 class="mb-4 text-center text-primary font-weight-bold">Shop by Category</h3>
+  <div class="row">
+    <div class="col-md-3 col-6 mb-3">
+      <a href="#" class="category-card text-decoration-none">
+        <strong>Phone Cases</strong>
+      </a>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <a href="#" class="category-card text-decoration-none">
+        <strong>Chargers</strong>
+      </a>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <a href="#" class="category-card text-decoration-none">
+        <strong>Earphones</strong>
+      </a>
+    </div>
+    <div class="col-md-3 col-6 mb-3">
+      <a href="#" class="category-card text-decoration-none">
+        <strong>Screen Protectors</strong>
+      </a>
+    </div>
+  </div>
+
+  <!-- Featured Products Section -->
+  <h3 class="mt-5 mb-4 text-center text-primary font-weight-bold">Featured Products</h3>
+  <div class="row">
+    {% for i in "1234" %}
+      <div class="col-md-3 mb-4">
+        <div class="card feature-card text-center">
+          {% if forloop.counter == 1 %}
+            <img src="{% static 'images/product1.jpeg' %}" class="product-img" alt="Product 1">
+          {% elif forloop.counter == 2 %}
+            <img src="{% static 'images/product2.jpeg' %}" class="product-img" alt="Product 2">
+          {% elif forloop.counter == 3 %}
+            <img src="{% static 'images/product3.jpeg' %}" class="product-img" alt="Product 3">
+          {% else %}
+            <img src="{% static 'images/product4.jpeg' %}" class="product-img" alt="Product 4">
+          {% endif %}
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Premium Case {{ forloop.counter }}</h5>
+            <p class="card-text mb-4">Shock-proof, slim, stylish.</p>
+            <div class="mt-auto">
+              <span class="h5 text-primary">$19.99</span>
+              <a href="#" class="btn btn-sm btn-primary btn-block mt-2">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock body %}
